@@ -4,7 +4,7 @@ A set of resources used to deploy hosted BeeAI Platform into Kubernetes cluster.
 
 ## Pre-requisites
 
-- We operate whithin `beeai` namespace.
+- We operate within `beeai` namespace.
 - Images are pulled from private github packages. Configure `ghcr-secret` secret, it will be used as `ImagePullSecret`.
 
 ## Deployment
