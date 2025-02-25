@@ -10,7 +10,7 @@ A set of resources used to deploy hosted BeeAI Platform into Kubernetes cluster.
 ## Deployment
 
 - Apply `server.yaml` to deploy platform server as a service.
-- Apply `web.yaml` to deploy patform website as a service. TBD
+- Apply `web.yaml` to deploy patform website as a service.
 
 ## Ingress
 
