@@ -28,6 +28,9 @@ spec:
           requests:
             cpu: "1"
             memory: "1Gi"
+        env:
+        - name: BEEAI_HOST
+          value: "http://beeai-server.beeai.svc.cluster.local:8333/mcp/sse"
       imagePullSecrets:
         - name: ghcr-secret
 ---
