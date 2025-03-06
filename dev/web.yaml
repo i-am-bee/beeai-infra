@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beeai-web
+  namespace: beeai
+  labels:
+    app: beeai-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: beeai-web
+  template:
+    metadata:
+      labels:
+        app: beeai-web
+    spec:
+      containers:
+      - name: beeai-web
+        image: ghcr.io/i-am-bee/beeai/beeai-web:latest
+        ports:
+        - name: http
+          containerPort: 3000
+        resources:
+          limits:
+            cpu: "1"
+            memory: "2Gi"
+          requests:
+            cpu: "1"
+            memory: "1Gi"
+        env:
+        - name: BEEAI_HOST
+          value: "http://beeai-server.beeai.svc.cluster.local:8333/mcp/sse"
+      imagePullSecrets:
+        - name: ghcr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: beeai-web
+  namespace: beeai
+spec:
+  selector:
+    app: beeai-web
+  ports:
+    - protocol: TCP
+      name: http
+      port: 3000
+      targetPort: http
+  type: ClusterIP
