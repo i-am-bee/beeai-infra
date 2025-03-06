@@ -23,11 +23,11 @@ spec:
           containerPort: 8333
         resources:
           limits:
-            cpu: "1"
-            memory: "2Gi"
+            cpu: "4"
+            memory: "4Gi"
           requests:
-            cpu: "1"
-            memory: "1Gi"
+            cpu: "4"
+            memory: "4Gi"
       imagePullSecrets:
         - name: ghcr-secret
 ---
