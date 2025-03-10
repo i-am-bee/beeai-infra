@@ -29,7 +29,7 @@ spec:
             cpu: "1"
             memory: "1Gi"
         env:
-        - name: MCP_CLIENT_SERVER_URL
+        - name: ACP_CLIENT_SERVER_URL
           value: "http://beeai-server.beeai.svc.cluster.local:8333/mcp/sse"
       imagePullSecrets:
         - name: ghcr-secret
