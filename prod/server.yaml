@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: beeai-server
-        image: ghcr.io/i-am-bee/beeai/beeai-server:latest
+        image: ghcr.io/i-am-bee/beeai/beeai-server:e2fcfa4f7f0bb62b6fcc5ca34fad1348f3a75efa
         ports:
         - name: acp
           containerPort: 8333
