@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: beeai-web
-        image: ghcr.io/i-am-bee/beeai/beeai-web:b3f312b59da85450f5abe41a483f14ae5bca3917
+        image: ghcr.io/i-am-bee/beeai/beeai-web:e8277c0f385b18eb6d66217ddc20dbcc1ecff340
         ports:
         - name: http
           containerPort: 3000
