@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beeai-server
+  namespace: beeai
+  labels:
+    app: beeai-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: beeai-server
+  template:
+    metadata:
+      labels:
+        app: beeai-server
+    spec:
+      containers:
+      - name: beeai-server
+        image: ghcr.io/i-am-bee/beeai-platform/beeai-server:latest
+        ports:
+        - name: acp
+          containerPort: 8333
+        resources:
+          limits:
+            cpu: "4"
+            memory: "4Gi"
+          requests:
+            cpu: "4"
+            memory: "4Gi"
+        env:
+        - name: AGENT_REGISTRY__ENABLED
+          value: "True"
+        - name: AGENT_REGISTRY__PREINSTALL
+          value: "True"
+      imagePullSecrets:
+        - name: ghcr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: beeai-server
+  namespace: beeai
+spec:
+  selector:
+    app: beeai-server
+  ports:
+    - protocol: TCP
+      name: acp
+      port: 8333
+      targetPort: acp
+  type: ClusterIP
